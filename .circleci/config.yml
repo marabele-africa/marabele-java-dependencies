@@ -57,12 +57,12 @@ workflows:
     nightly_build:
       triggers:
         - schedule:
-            cron: "0 0 * * *"
+            cron: "30 23 * * *"
             filters:
               branches:
                 only:
                   - development
-        jobs:
-          - build
+      jobs:
+        - build
 
 

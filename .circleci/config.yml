@@ -39,7 +39,7 @@ jobs:
     executor: my-executor
     steps:
       # Release project, placeholder command here right now
-      - run: ls -ltr
+      - run: pwd && ls -ltr
 
 workflows:
   version: 2

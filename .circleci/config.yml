@@ -51,9 +51,9 @@ workflows:
           type: approval
           requires:
             - build
-            - release:
-                requires:
-                  - hold
+      - release:
+          requires:
+            - hold
     nightly_build:
       triggers:
         - schedule:

@@ -40,28 +40,29 @@ jobs:
 
 workflows:
   version: 2
-    build_and_release:
-      jobs:
-          - build
-            - hold:
+
+  build_pipeline:
+    jobs:
+      - build
+          - hold:
+          filters:
+            branches:
+              only: development
+          type: approval
+          requires:
+            - build
+            - release:
+                requires:
+                  - hold
+    nightly_build:
+      triggers:
+        - schedule:
+            cron: "0 0 * * *"
             filters:
               branches:
-                only: development
-            type: approval
-            requires:
-              - build
-              - release:
-                  requires:
-                    - hold
-      nightly_build:
-        triggers:
-          - schedule:
-              cron: "0 0 * * *"
-              filters:
-                branches:
-                  only:
-                    - development
-          jobs:
-            - build
+                only:
+                  - development
+        jobs:
+          - build
 
 

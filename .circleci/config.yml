@@ -44,7 +44,7 @@ workflows:
   build_pipeline:
     jobs:
       - build
-          - hold:
+      - hold:
           filters:
             branches:
               only: development

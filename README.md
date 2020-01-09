@@ -1,7 +1,6 @@
 # Marabele Java Dependencies 
 
-[![pipeline status](badge link goes here)
-[![coverage report](badge link goes here)
+[![CircleCI](https://circleci.com/gh/marabele-africa/marabele-java-dependencies/tree/master.svg?style=svg)](https://circleci.com/gh/marabele-africa/marabele-java-dependencies/tree/master)
 
 This module provides single point of control for plugin & dependency definition for Maven related projects
 
@@ -15,4 +14,4 @@ In your terminal navigate to the project top level directory & execute the follo
  
 **Build & Install:**
 
-    mvn --batch-mode package --file pom.xml
+    mvn --batch-mode clean install

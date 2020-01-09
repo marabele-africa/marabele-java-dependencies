@@ -1,7 +1,7 @@
 version: 2.1
 
 executors:
-  my-executor:
+  default-execution-environment:
     docker:
       - image: circleci/openjdk:11.0.3-jdk-stretch
     working_directory: ~/repo
@@ -11,9 +11,9 @@ executors:
 
 jobs:
   build:
-    executor: my-executor
+    executor: default-execution-environment
     steps:
-      # Checkout the source
+      # Checkout the source code
       - checkout
 
       # Download and cache dependencies
@@ -33,26 +33,51 @@ jobs:
       # Build project
       - run: mvn --batch-mode clean install
 
-      - run: ls -l
+      # Persist Repo to workspace
+      - persist_to_workspace:
+          root: ~/
+          paths: repo
+
+      # List working directory & contents
+      - run: pwd && ls -ltr
 
   release:
-    executor: my-executor
+    executor: default-execution-environment
     steps:
-      # Release project, placeholder command here right now
+      - attach_workspace:
+          at: ~/repo
+
+      # List working directory & contents
       - run: pwd && ls -ltr
 
 workflows:
   version: 2
 
-  build_pipeline:
+  "Check-In Build Pipeline":
     jobs:
       - build
       - approve_release:
           type: approval
           requires:
             - build
+          filters:
+            branches:
+              only:
+                - master
+                - development
       - release:
           requires:
             - approve_release
+
+  "Nightly Build Pipeline":
+    triggers:
+      - schedule:
+          cron: "59 23 * * *"
+          filters:
+            branches:
+              only:
+                - development
+    jobs:
+      - build
 
 

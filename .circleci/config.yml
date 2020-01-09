@@ -50,6 +50,6 @@ workflows:
             - build
       - release:
           requires:
-            - hold
+            - approve_release
 
 

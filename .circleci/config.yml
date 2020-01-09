@@ -54,15 +54,5 @@ workflows:
       - release:
           requires:
             - hold
-    nightly_build:
-      triggers:
-        - schedule:
-            cron: "30 23 * * *"
-            filters:
-              branches:
-                only:
-                  - development
-      jobs:
-        - build
 
 

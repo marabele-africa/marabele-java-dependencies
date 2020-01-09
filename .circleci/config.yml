@@ -32,6 +32,9 @@ jobs:
 
       # Build project
       - run: mvn --batch-mode clean install
+
+      - run: ls -l
+
   release:
     executor: my-executor
     steps:

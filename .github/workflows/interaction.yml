@@ -1,0 +1,14 @@
+name: 'Interaction'
+
+on: [pull_request, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'Congratulations 🎊🥳🎉, you have created your first issue. Keep them coming 😜'' first issue'
+        first-pr-message: 'Congratulations 🎊🥳🎉, you have submitted your first pull request. Keep it up👊🏽'' first pr'
+        create-pr-message: 'Awesome, you just created a pull request 🥳, please make sure the build passes before disappearing 🙏🏽'

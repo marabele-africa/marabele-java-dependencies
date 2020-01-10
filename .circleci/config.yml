@@ -78,7 +78,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
                 - development
       - "Release Source":
           requires:

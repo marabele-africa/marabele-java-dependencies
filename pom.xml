@@ -23,7 +23,8 @@
     <distributionManagement>
         <repository>
             <id>marabele-africa-github</id>
-            <url>https://maven.pkg.github.com/marabele-africa</url>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/marabele-africa/marabele-java-dependencies</url>
         </repository>
     </distributionManagement>
 

@@ -12,7 +12,25 @@ executors:
 jobs:
   "Build Source":
     executor: default-execution-environment
+
+    # Show some of the CircleCI runtime env variables
     steps:
+      - run:
+          command: |-
+            echo "TRIGGERER: ${CIRCLE_USERNAME}"
+            echo "BUILD_NUMBER: ${CIRCLE_BUILD_NUM}"
+            echo "BUILD_URL: ${CIRCLE_BUILD_URL}"
+            echo "BRANCH: ${CIRCLE_BRANCH}"
+            echo "RUNNING JOB: ${CIRCLE_JOB}"
+            echo "JOB PARALLELISM: ${CIRCLE_NODE_TOTAL}"
+            echo "CIRCLE_REPOSITORY_URL: ${CIRCLE_REPOSITORY_URL}"
+          name: "Show Runtime Environment Variables"
+      - run:
+          command: |-
+            echo "uname:" $(uname -a)
+            echo "arch: " $(arch)
+          name: "Show System Information"
+
       # Checkout the source code
       - checkout
 

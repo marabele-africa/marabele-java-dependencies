@@ -38,7 +38,7 @@ jobs:
           root: ~/
           paths: build_directory
 
-  release:
+  "Release Source":
     executor: default-execution-environment
     steps:
       - attach_workspace:
@@ -53,7 +53,7 @@ workflows:
   "Check-In Build":
     jobs:
       - "Build Source"
-      - approve_release:
+      - "Approve Source Release":
           type: approval
           requires:
             - "Build Source"
@@ -62,9 +62,9 @@ workflows:
               only:
                 - master
                 - development
-      - release:
+      - "Release Source":
           requires:
-            - approve_release
+            - "Approve Source Release"
 
   "Nightly Build":
     triggers:

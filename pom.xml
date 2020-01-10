@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.8.RELEASE</version>
-        <relativePath/>
+        <relativePath />
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>za.co.marabele.africa</groupId>
     <artifactId>marabele-java-dependencies</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>pom</packaging>
 
     <name>Marabele Java Dependencies</name>
@@ -32,7 +31,7 @@
         <connection>scm:git:https://github.com/marabele-africa/marabele-java-dependencies</connection>
         <developerConnection>scm:git:https://github.com/marabele-africa/marabele-java-dependencies</developerConnection>
         <url>https://github.com/marabele-africa/marabele-java-dependencies</url>
-        <tag>HEAD</tag>
+        <tag>marabele-java-dependencies-0.0.1</tag>
     </scm>
 
     <properties>

@@ -20,6 +20,13 @@
         Provides single point of control for plugin and dependency management
     </description>
 
+    <distributionManagement>
+        <repository>
+            <id>marabele-africa-github</id>
+            <url>https://maven.pkg.github.com/marabele-africa</url>
+        </repository>
+    </distributionManagement>
+
     <scm>
         <connection>scm:git:https://gitlab.com/marabele-africa/marabele-java-dependencies</connection>
         <developerConnection>scm:git:https://gitlab.com/marabele-africa/marabele-java-dependencies</developerConnection>

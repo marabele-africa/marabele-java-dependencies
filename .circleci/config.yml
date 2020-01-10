@@ -10,7 +10,7 @@ executors:
       MAVEN_OPTS: -Xmx3200m
 
 jobs:
-  build:
+  "Build Source":
     executor: default-execution-environment
     steps:
       # Checkout the source code
@@ -23,7 +23,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run:
-          name: "Download Dependencies for offline use"
+          name: "Download Dependencies for Offline Use"
           command: mvn dependency:go-offline
       - save_cache:
           paths:
@@ -32,7 +32,7 @@ jobs:
 
       # Build project and persist results to workspace
       - run:
-          name: "Build project"
+          name: "Build Source"
           command: mvn --batch-mode clean install
       - persist_to_workspace:
           root: ~/
@@ -52,11 +52,11 @@ workflows:
 
   "Check-In Build":
     jobs:
-      - build
+      - "Build Source"
       - approve_release:
           type: approval
           requires:
-            - build
+            - "Build Source"
           filters:
             branches:
               only:
@@ -75,6 +75,6 @@ workflows:
               only:
                 - development
     jobs:
-      - build
+      - "Build Source"
 
 

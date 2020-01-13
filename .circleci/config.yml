@@ -79,6 +79,12 @@ jobs:
             - "b1:34:91:69:cf:ee:d9:c5:58:ec:38:49:a8:39:29:82"
 
       - run:
+          name: "List known hosts"
+          command: cat ~/.ssh/known_hosts
+          when: always
+
+
+      - run:
           name: "Configure Git User"
           command: git config --local user.name "tech-rebel" && git config --local user.email "tech.rebel@marabele.africa"
           when: always

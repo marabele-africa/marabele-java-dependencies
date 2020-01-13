@@ -70,7 +70,12 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      # Execute release
+      # Prepare for Release
+      - run:
+          name: "Prepare for Release"
+          command: git config --local user.name "tech-rebel" && git config --local user.email "tech.rebel@marabele.africa"
+          when: always
+
       - run:
           name: "Execute Release"
           command: mvn -Drepo.username=$REPO_USERNAME -Drepo.password=$REPO_PASSWORD -s .circleci/maven-settings.xml --batch-mode release:clean release:prepare release:perform

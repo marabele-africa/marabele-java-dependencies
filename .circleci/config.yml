@@ -34,10 +34,6 @@ jobs:
             echo "arch: " $(arch)
           when: always
 
-      - add_ssh_keys:
-          fingerprints:
-            - "b1:34:91:69:cf:ee:d9:c5:58:ec:38:49:a8:39:29:82"
-
       # Checkout the source code
       - checkout
 

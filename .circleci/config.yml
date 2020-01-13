@@ -100,6 +100,7 @@ workflows:
             branches:
               only:
                 - development
+                - hotfix
       - "Release Source":
           requires:
             - "Approve Source Release"

@@ -11,7 +11,7 @@
 
     <groupId>za.co.marabele.africa</groupId>
     <artifactId>marabele-java-dependencies</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Marabele Java Dependencies</name>

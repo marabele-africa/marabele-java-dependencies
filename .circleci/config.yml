@@ -71,10 +71,9 @@ jobs:
           at: ~/
 
       # Prepare for Release
-      - run:
-          name: "Prepare for Release"
-          command: git config --local user.name "tech-rebel" && git config --local user.email "tech.rebel@marabele.africa"
-          when: always
+      - add_ssh_keys:
+          fingerprints:
+            - "b1:34:91:69:cf:ee:d9:c5:58:ec:38:49:a8:39:29:82"
 
       - run:
           name: "Execute Release"

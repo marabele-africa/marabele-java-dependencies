@@ -15,8 +15,7 @@
     <packaging>pom</packaging>
 
     <name>Marabele Java Dependencies</name>
-    <description>
-        Provides single point of control for plugin and dependency management
+    <description>Parent pom providing single point of configuration for plugins and dependencies
     </description>
 
     <distributionManagement>

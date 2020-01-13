@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/marabele-africa/marabele-java-dependencies/tree/master.svg?style=svg)](https://circleci.com/gh/marabele-africa/marabele-java-dependencies/tree/master)
 
-This module provides single point of control for plugin & dependency definition for Maven related projects
+This module provides single point of configuration for plugins and dependencies
 
 ## Getting started
 

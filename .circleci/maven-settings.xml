@@ -29,14 +29,6 @@
                         <enabled>false</enabled>
                     </snapshots>
                 </repository>
-                <repository>
-                    <id>marabele-africa-github-repo</id>
-                    <url>https://maven.pkg.github.com/marabele-africa</url>
-                </repository>
-                <repository>
-                    <id>tech-rebel-github-repo</id>
-                    <url>https://maven.pkg.github.com/tech-rebel</url>
-                </repository>
             </repositories>
         </profile>
     </profiles>

@@ -73,7 +73,7 @@ jobs:
       # Prepare for Release
       - run:
           name: "Prepare for Release"
-          command: git config --local user.name "tech-rebel" && git config --local user.email "tech.rebel@marabele.africa"
+          command: git config --global user.name "tech-rebel" && git config --global user.email "tech.rebel@marabele.africa"
           when: always
 
       - run:

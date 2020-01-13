@@ -77,17 +77,9 @@ jobs:
           when: always
 
       - run:
-          name: "Prepare Release"
-          command: git config --list
+          name: "Execute Release"
+          command: mvn -Drepo.username=$REPO_USERNAME -Drepo.password=$REPO_PASSWORD -s .circleci/maven-settings.xml --batch-mode release:clean release:prepare release:perform
           when: always
-
-#      - run:
-#          name: "Execute Release"
-#          command: |-
-#            git config --global user.name "tech-rebel"
-#            git config --global user.email "tech.rebel@marabele.africa"
-#            mvn -Drepo.username=$REPO_USERNAME -Drepo.password=$REPO_PASSWORD -s .circleci/maven-settings.xml --batch-mode release:clean release:prepare release:perform
-#          when: always
 
 workflows:
   version: 2

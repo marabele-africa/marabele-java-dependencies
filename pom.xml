@@ -11,7 +11,7 @@
 
     <groupId>za.co.marabele.africa</groupId>
     <artifactId>marabele-java-dependencies</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.3</version>
     <packaging>pom</packaging>
 
     <name>Marabele Java Dependencies</name>
@@ -28,10 +28,10 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/marabele-africa/marabele-java-dependencies</connection>
-        <developerConnection>scm:git:https://github.com/marabele-africa/marabele-java-dependencies</developerConnection>
+        <connection>scm:git:git@github.com:marabele-africa/marabele-java-dependencies</connection>
+        <developerConnection>scm:git:git@github.com:marabele-africa/marabele-java-dependencies</developerConnection>
         <url>https://github.com/marabele-africa/marabele-java-dependencies</url>
-        <tag>marabele-java-dependencies-0.0.1</tag>
+        <tag>marabele-java-dependencies-0.0.3</tag>
     </scm>
 
     <properties>

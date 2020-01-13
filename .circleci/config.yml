@@ -13,9 +13,10 @@ jobs:
   "Build Source":
     executor: default-execution-environment
 
-    # Show some of the CircleCI runtime env variables
     steps:
+      # Show some of the CircleCI runtime env variables
       - run:
+          name: "Show Runtime Environment Variables"
           command: |-
             echo "TRIGGERER: ${CIRCLE_USERNAME}"
             echo "BUILD_NUMBER: ${CIRCLE_BUILD_NUM}"
@@ -24,12 +25,14 @@ jobs:
             echo "RUNNING JOB: ${CIRCLE_JOB}"
             echo "JOB PARALLELISM: ${CIRCLE_NODE_TOTAL}"
             echo "CIRCLE_REPOSITORY_URL: ${CIRCLE_REPOSITORY_URL}"
-          name: "Show Runtime Environment Variables"
+          when: always
+
       - run:
+          name: "Show System Information"
           command: |-
             echo "uname:" $(uname -a)
             echo "arch: " $(arch)
-          name: "Show System Information"
+          when: always
 
       # Checkout the source code
       - checkout
@@ -40,9 +43,12 @@ jobs:
             - v1-dependencies-{{ checksum "pom.xml" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
+
       - run:
           name: "Download Dependencies for Offline Use"
           command: mvn dependency:go-offline
+          when: always
+
       - save_cache:
           paths:
             - ~/.m2
@@ -52,6 +58,8 @@ jobs:
       - run:
           name: "Build Source"
           command: mvn --batch-mode clean install
+          when: always
+
       - persist_to_workspace:
           root: ~/
           paths: build_directory
@@ -62,8 +70,21 @@ jobs:
       - attach_workspace:
           at: ~/
 
-      # List working directory & contents
-      - run: pwd && ls -ltr
+      - add_ssh_keys
+      - run:
+          # See issue : https://discuss.circleci.com/t/known-hosts-in-circle-2-0/18544
+          name: "Keyscan Github (HACK)"
+          command: ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - run:
+          name: "Configure Git User"
+          command: git config --local user.name "tech-rebel" && git config --local user.email "tech.rebel@marabele.africa"
+          when: always
+
+      - run:
+          name: "Execute Release"
+          command: mvn -Drepo.username=$REPO_USERNAME -Drepo.password=$REPO_PASSWORD -s .circleci/maven-settings.xml --batch-mode release:clean release:prepare release:perform
+          when: always
 
 workflows:
   version: 2
@@ -82,6 +103,7 @@ workflows:
       - "Release Source":
           requires:
             - "Approve Source Release"
+          context: REPO_CONTEXT
 
   "Nightly Build":
     triggers:

@@ -71,6 +71,10 @@ jobs:
           at: ~/
 
       - add_ssh_keys
+      - run:
+          # See issue : https://discuss.circleci.com/t/known-hosts-in-circle-2-0/18544
+          name: "Keyscan Github (HACK)"
+          command: ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
       - run:
           name: "List known hosts"
